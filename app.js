@@ -2,25 +2,22 @@
 
 
 
-function Account(employeeID, fullName, department, level, salary) {
+function Account(employeeID, fullName, department, level, salary,imgPath ) {
     this.employeeID = employeeID;
     this.fullName = fullName;
     this.department = department;
     this.level = level;
     this.salary = salary;
+    this.imgPath = imgPath;
     
 }
 
-const A1 = new Account('1000 ','Ghazi Samer', 'Administration','Senior');
-const A2 = new Account('1001', 'Lana Ali', 'Finance', 'Senior');
-const A3 = new Account('1002', 'Tamara Ayoub', 'Marketing','Senior');
-const A4 = new Account('1003','Safi Walid	','Administration',	'Mid-Senior'); 
-const A5 = new Account('1004', 'Omar Zaid','Development', 'Senior');
-const A6 = new Account('1005','Rana Saleh', 'Development', 'Junior');
-const A7 = new Account('1006', 'Hadi Ahmad',	'Finance', 'Mid-Senior');
 
-
-
+Account.prototype.generatID = function () {
+    let min=1000;
+    let max=10000;
+    this.price =  Math.floor(Math.random() * (max - min) + min) ;
+}
 
 Account.prototype.randomSalary= function () {
     console.log(this.level);
@@ -41,73 +38,114 @@ Account.prototype.randomSalary= function () {
        return netSalary(Math.floor(Math.random() * (max - min) + min));
 
 }
+
+
 }
 function netSalary(salary){
 let S= salary-((salary*7.5)/100);
 
 return S;
 
+}
 
+
+
+
+
+
+
+// const A1 = new Account('1000 ','Ghazi Samer', 'Administration','Senior');
+// const A2 = new Account('1001', 'Lana Ali', 'Finance', 'Senior');
+// const A3 = new Account('1002', 'Tamara Ayoub', 'Marketing','Senior');
+// const A4 = new Account('1003','Safi Walid	','Administration',	'Mid-Senior'); 
+// const A5 = new Account('1004', 'Omar Zaid','Development', 'Senior');
+// const A6 = new Account('1005','Rana Saleh', 'Development', 'Junior');
+// const A7 = new Account('1006', 'Hadi Ahmad',	'Finance', 'Mid-Senior');
+
+
+Account.prototype.render = function() {
+
+    // const test = document.getElementsByClassName('prag');
+    // console.log(test);
+
+    const container = document.getElementById('Employes');
+    console.log(container);
+
+    // 1. create the element
+    // 2. append it to it's parent
+    // 3. add text content to it || attribuates
+
+    const divEl = document.createElement('div');
+    container.appendChild(divEl);
+
+
+
+    const imgEl = document.createElement('img');
+    divEl.appendChild(imgEl);
+    imgEl.setAttribute('src',this.imgPath);
+    imgEl.width = "250";
+    imgEl.height = "200";
+
+
+   
+    const nameEl = document.createElement('h3');
+    divEl.appendChild(nameEl);
+    nameEl.textContent =`Employe Name ${this.fullName}`;
+
+
+    const idEl = document.createElement('h5');
+    divEl.appendChild(idEl);
+    nameEl.textContent =`Employe ID ${this.employeeID}`
+
+   
+    const salaryEl = document.createElement('h5');
+    divEl.appendChild( salaryEl);
+    salaryEl.textContent = `Salary: ${this.salary}$`
     
 
 
-}
+    const  departmentEl = document.createElement('h5');
+    divEl.appendChild( department);
+    departmentEl.textContent = `department: ${this.department}$`
 
-Account.prototype.render = function () {
-    document.write(`${this.fullName}:  ${this.randomSalary()} <br><br>`);
+
+    const  levelEl = document.createElement('h5');
+    divEl.appendChild( levelEl);
+    levelEl.textContent = `level: ${this.level}$`
+
+
+
     
+   
+  
+
+   
+
+    //display a line between the drinks
+    const hrEl = document.createElement('hr');
+    divEl.appendChild(hrEl);
+
+}
 
 
+
+let EmployeForm = document.getElementById("EmployeForm");
+EmployeForm.addEventListener('submit', addNewEmploye);
+
+function addNewEmploye(event) {
+    event.preventDefault();
+    console.log(event);
+    let fullName = event.target.Full-Name.value;
+    let department = event.target.Department.value;
+    let Level = event.target.Level.value;
+    let imgPath = event.target.imgUrl.value;
+    // let employeeID = event.target.employeeID.value;
+    // let salary =  event.target.salary.value
+   
+
+    let newEmploye = new Account(employeeID, fullName, department, level, salary, imgPath);
+    
+    newEmploye.render();   
 
 
 }
-A1.render()
-A2.render()
-A3.render()
-A4.render()
-A5.render()
-A6.render()
-A7.render()
-
-
-
-
-console.log(A1.this.fullName.randomSalary());
-console.log(A2.randomSalary());
-console.log(A3.randomSalary());
-console.log(A4.randomSalary());
-console.log(A5.randomSalary());
-console.log(A6.randomSalary());
-console.log(A7.randomSalary());
-
-
-
-// function generateTable() {
-//     // creates a <table> element and a <tbody> element
-//     const tbl = document.createElement("table");
-//     const tblBody = document.createElement("tbody");
-  
-//     // creating all cells
-//     for (let i = 0; i < 8; i++) {
-//       // creates a table row
-//       const row = document.createElement("tr");
-  
-//       for (let j = 0; j < 2; j++) {
-       
-//         const cell = document.createElement("td");
-//         const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
-//         cell.appendChild(cellText);
-//         row.appendChild(cell);
-//       }
-  
-//       // add the row to the end of the table body
-//       tblBody.appendChild(row);
-//     }
-  
-//     // put the <tbody> in the <table>
-//     tbl.appendChild(tblBody);
-//     // appends <table> into <body>
-//     document.body.appendChild(tbl);
-//     // sets the border attribute of tbl to '2'
-//     tbl.setAttribute("border", "2");
-//   }

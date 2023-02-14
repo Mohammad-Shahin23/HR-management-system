@@ -20,10 +20,8 @@
 
     <h1>Home page</h1>
 
-      
-<div>
 <img src="https://www.shutterstock.com/image-vector/creative-accounting-logo-design-template-260nw-1531994393.jpg"/>
-</div>
+
 <nav>
     <ul >
         <li> <a href="#"> Home </a></li>
@@ -34,12 +32,71 @@
  </header>
 
  
-<main id="table1">
 
-    <script src="./app.js"></script>
-    
+
+<main>
+        <h2> Employe Details Form </h2>
+        <form id="EmployeForm">
+            
+            <fieldset>
+                <legend>Enter Employe details </legend>
+
+                <label for="Full-Name">Full Name:</label>
+                <input type="text" name="Full-Name" id="Full-Name" placeholder="Full-Name">
+
+                <br/>
+                <br/>
+
+                <label for="Department">Department:</label>
+                <select name="pets" id="Department">
+                    <option value="">--Please choose a Department--</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Development">Development</option>
+                    <option value="Finance">Finance</option>
+                </select>
+                
+
+                <br/>
+                <br/>
+
+                
+
+                <label for="Level">Level</label>
+                <select name="Level" id="Level">
+                    <option value="">--Please choose a level--</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Mid-Senior">Mid-Senior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+                
+
+                <br/>
+                <br/>
+
+                <label for="imgUrl">Image</label>
+                <input type="text" name="imgUrl" id="imgUrl" placeholder="image path">
+
+                <br/>
+                <br/>
+
+                
+
+                <br/>
+                <br/>
+
+                <input type="submit" value="Add">
+
+            </fieldset>
+
+        </form>
+        
+
 </main>
-<footer id="footer">
+    
+
+<footer>
+    <script src="app.js"></script>
     
     
         <p> &copy; All right reserved </p><br/>
