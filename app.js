@@ -9,6 +9,7 @@ function Account( fullName, department, level,imgPath ) {
     this.level = level;
     this.salary = 0;
     this.imgPath = imgPath;
+    // emplyeeArr.push(this);
     
 }
 
@@ -20,7 +21,7 @@ Account.prototype.generatID = function () {
 }
 
 Account.prototype.randomSalary= function () {
-    // console.log(this.level);
+  
 
         if(this.level=="Senior"){
             let min=1500;
@@ -48,62 +49,8 @@ Account.prototype.randomSalary= function () {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-//     if(this.level=="Senior"){
-//         let min=1500;
-//         let max=2000;
-//        return netSalary(Math.floor(Math.random() * (max - min) + min));
-//     }else if (this.level=="Mid-Senior"){
-//         let min=1000;
-//         let max=1500;
-//        return netSalary(Math.floor(Math.random() * (max - min) + min));
-
-//     }else if (this.level=="Junior"){
-//         let min=500;
-//         let max=1000;
-//         console.log("random",Math.random() * (max - min) + min);
-//        return netSalary(Math.floor(Math.random() * (max - min) + min));
-
-// }
-
-
-// }
-// function netSalary(){
-// let S= salary-((salary*7.5)/100);
-
-// return S;
-
-// }
-
-
-
-
-
-
-
-// const A1 = new Account('1000 ','Ghazi Samer', 'Administration','Senior');
-// const A2 = new Account('1001', 'Lana Ali', 'Finance', 'Senior');
-// const A3 = new Account('1002', 'Tamara Ayoub', 'Marketing','Senior');
-// const A4 = new Account('1003','Safi Walid	','Administration',	'Mid-Senior'); 
-// const A5 = new Account('1004', 'Omar Zaid','Development', 'Senior');
-// const A6 = new Account('1005','Rana Saleh', 'Development', 'Junior');
-// const A7 = new Account('1006', 'Hadi Ahmad',	'Finance', 'Mid-Senior');
-
-
 Account.prototype.render = function() {
 
-    // const test = document.getElementsByClassName('prag');
-    // console.log(test);
 
     const container = document.getElementById('Employes');
     console.log(container);
@@ -116,7 +63,6 @@ Account.prototype.render = function() {
     container.appendChild(divEl);
 
 
-
     const imgEl = document.createElement('img');
     divEl.appendChild(imgEl);
     imgEl.setAttribute('src',this.imgPath);
@@ -124,44 +70,64 @@ Account.prototype.render = function() {
     imgEl.height = "100";
 
 
+    // getInformation();
    
-    const nameEl = document.createElement('h3');
-    divEl.appendChild(nameEl);
-    nameEl.textContent =`Employe Name: ${this.fullName}`;
+    // if(emplyeeArr == null) //localstorage is empty
+    // {
+    //   emplyeeArr = [];
+    // }
 
 
-    const idEl = document.createElement('h5');
-    divEl.appendChild(idEl);
-    idEl.textContent =`Employe ID ${this.employeeID}`
-
-   
-    const salaryEl = document.createElement('h5');
-    divEl.appendChild( salaryEl);
-    salaryEl.textContent = `Salary: ${this.salary}`
-    
+    // for (let i = 0; i < emplyeeArr.length; i++) {
 
 
-    const  departmentEl = document.createElement('h5');
-    divEl.appendChild( departmentEl);
-    departmentEl.textContent = `department: ${this.department}`
 
-
-    const  levelEl = document.createElement('h5');
-    divEl.appendChild( levelEl);
-    levelEl.textContent = `level: ${this.level}`
-
+        // const imgEl = document.createElement('img');
+        // divEl.appendChild(imgEl);
+        // imgEl.setAttribute('src',this.imgPath);
+        // imgEl.width = "250";
+        // imgEl.height = "100";
 
 
     
-   
-  
+        const nameEl = document.createElement('h3');
+        divEl.appendChild(nameEl);
+        nameEl.textContent =`Employe Name: ${this.fullName}`;
 
-   
 
-    //display a line between the drinks
-    const hrEl = document.createElement('hr');
-    divEl.appendChild(hrEl);
+        const idEl = document.createElement('h5');
+        divEl.appendChild(idEl);
+        idEl.textContent =`Employe ID ${this.employeeID}`
 
+    
+        const salaryEl = document.createElement('h5');
+        divEl.appendChild( salaryEl);
+        salaryEl.textContent = `Salary: ${this.salary}`
+        
+
+
+        const  departmentEl = document.createElement('h5');
+        divEl.appendChild( departmentEl);
+        departmentEl.textContent = `department: ${this.department}`
+
+
+        const  levelEl = document.createElement('h5');
+        divEl.appendChild( levelEl);
+        levelEl.textContent = `level: ${this.level}`
+
+
+
+        
+    
+    
+
+    
+
+       
+        const hrEl = document.createElement('hr');
+        divEl.appendChild(hrEl);
+
+    
 }
 
 
@@ -191,6 +157,24 @@ function addNewEmploye(event) {
     newEmploye.render();   
 
 
+
+    // let jsonArr = JSON.stringify(emplyeeArr);
+    // localStorage.setItem("Employes", jsonArr);
+
+    // render();
+
+
 }
 
+
+
+
+
+
+// function getInformation() {
+
+
+// let jsonArr = localStorage.getItem("Employes");
+// drinkArr = JSON.parse(jsonArr);
+// }
 
